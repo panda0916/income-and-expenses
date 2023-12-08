@@ -32,69 +32,50 @@
         </span>
             
     </form>
-    <table>
-        <tr id="tr1">
-            <th >事項</th>
-            <th>類型</th>
-            <th>金額</th>
-            <th>修改事項</th>
-            <th>修改金額</th>
-        </tr>
-        <% let total = 0%>
+    <div>
+        <span>事項</span>
+        <span>類型</span>
+        <span>金額</span>
+        <span>修改事項</span>
+        <span>修改金額</span>
+    </div>
+    
+    <% let total = 0%>
         <% for(let c of project) { %>
+            <div>
             <%if(c.justburden === '支出') {%>
                 <%total -= Math.abs(c.yuan)%>
             <%}if(c.justburden=== '收入') { %>
                 <% total += Math.abs(c.yuan) %>
             <%}%>
-        <tr>
-            <td >
-                <%= c.matter %>
-            </td>
-            <td>
-                <%= c.justburden %>
-                <form action="/" method="post" style="display: inline">
+            <%= c.matter %>
+            <%= c.justburden %>
+            <form action="/" method="post" style="display: inline">
+            <input type="hidden" name="id" value="<%= c.id %>" style="display: none;">
+            <input type="hidden" name="action" value="switch">
+            <button class="rounded-circle">切換</button>
+            </form>
+            <%= c.yuan %>
+            <form method="POST" action="/?_method=PATCH" style="display: inline; ">
+                <input type="hidden" name="_method" value="PATCH">
+                <input type="hidden" name="matterId" value="<%= c.id %>" style="display: none;">
+                <input type="text" maxlength="8" name="newMatterText" value="<%= c.matter %>">
+                <button class="rounded-pill btn btn-success" type="submit">修改事項</button>
+            </form>
+            <form method="POST" action="/yuan?_method=PATCH" style="display: inline; ">
+                <input type="hidden" name="_method" value="PATCH">
+                <input type="hidden" name="yuanId" value="<%= c.id %>" style="display: none;">
+                <input type="number" maxlength="8" name="newYuan" value="<%= c.yuan %>">
+                <button class="rounded-pill btn btn-success" type="submit">修改金額</button>
+            </form>
+            <form method="POST" action="/?_method=DELETE" style="display: inline;">
                 <input type="hidden" name="id" value="<%= c.id %>" style="display: none;">
-                <input type="hidden" name="action" value="switch">
-                <button class="rounded-circle">切換</button>
-                </form>
-            </td>
-            <td>
-                <%= c.yuan %>
-            </td>
-            <td>
-                <form method="POST" action="/?_method=PATCH" style="display: inline; ">
-                    <input type="hidden" name="_method" value="PATCH">
-                    <input type="hidden" name="matterId" value="<%= c.id %>" style="display: none;">
-                    <input type="text" maxlength="8" name="newMatterText" value="<%= c.matter %>">
-                    <button class="rounded-pill btn btn-success" type="submit">修改事項</button>
-                </form>
-            </td>
-            <td>
-                <form method="POST" action="/yuan?_method=PATCH" style="display: inline; ">
-                    <input type="hidden" name="_method" value="PATCH">
-                    <input type="hidden" name="yuanId" value="<%= c.id %>" style="display: none;">
-                    <input type="number" maxlength="8" name="newYuan" value="<%= c.yuan %>">
-                    <button class="rounded-pill btn btn-success" type="submit">修改金額</button>
-                </form>
-            </td>
-            <td>
-                <form method="POST" action="/?_method=DELETE" style="display: inline;">
-                    <input type="hidden" name="id" value="<%= c.id %>" style="display: none;">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button class=" btn btn-danger rounded-pill  align-middle" type="submit">刪除</button>
-                </form>
-            </td>
-        </tr>
-
+                <input type="hidden" name="_method" value="DELETE">
+                <button class=" btn btn-danger rounded-pill  align-middle" type="submit">刪除</button>
+            </form>
+            </div>
             <% } %>
-        <tr>
-            <td >總計</td>
-            <td></td>
-            <td><%=total%></td>
-        </tr>
-
-    </table>
+            總計<%=total%>
 </body>
 
 </html>
