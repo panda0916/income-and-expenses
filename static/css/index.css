@@ -5,3 +5,47 @@
 #re-label {
     color: red;
 }
+input[type="text"],
+input[type="number"] {
+    width: 160px;
+}
+h1 {
+    display: flex;
+    justify-content: center
+}
+
+.d1, .d2{
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+  }
+/* 調整每行的間距 */
+form>* {
+    margin-bottom: 5px;
+}
+.d1 input{
+    margin-right:26px;
+}
+/* 調整 label 與 input 之間的間距 */
+.d2 label {
+    font-size:25px;
+    margin-right:28px;
+    
+}
+.d3{
+    margin-left:627px;
+}
+.d3 button{
+    margin-left:20px;
+}
+
+
+
+table{
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+  }
+.cl1{
+    margin-right:50px;
+}

@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js -e css,html,ejs,js"
+  },
   "description": "",
   "dependencies": {
     "ejs": "^3.1.9",
