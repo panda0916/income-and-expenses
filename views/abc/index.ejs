@@ -12,29 +12,29 @@
 </head>
 <body>
     <h1>收入支出</h1>
-    <form action="/" method="post" class="sticky-top" >
-        <div class="d1">
+    <form action="/" method="post" >
+        <div >
             <span>事項:</span>
             <input type="text" placeholder="事情" name="matter" maxlength="8">
         </div>
-        <div class="d2">
+        <div >
             <span>類型:</span>
             <input type="radio" name="yn" style="display: inline" value="just" id="gr">
             <label for="gr" id="gr-label">收入</label>
             <input type="radio" name="yn" style="display: inline" value="burden" id="re">
             <label for="re" id="re-label">支出</label>
         </div>
-        <span class="d3" >
+        <span >
             <label for="yuan" id="yuan-y">金額:</label>
             <input type="number" placeholder="金額" name="yuan" maxlength="5" id="yuan">
             <input type="hidden" name="action" value="add">
-            <button class="rounded-circle">新增</button>
+            <button>新增</button>
         </span>
             
     </form>
     <table>
         <tr id="tr1">
-            <th class="cl1">事項</th>
+            <th >事項</th>
             <th>類型</th>
             <th>金額</th>
             <th>修改事項</th>
@@ -48,7 +48,7 @@
                 <% total += Math.abs(c.yuan) %>
             <%}%>
         <tr>
-            <td class="cl1">
+            <td >
                 <%= c.matter %>
             </td>
             <td>
@@ -89,7 +89,7 @@
 
             <% } %>
         <tr>
-            <td class="cl1">總計</td>
+            <td >總計</td>
             <td></td>
             <td><%=total%></td>
         </tr>

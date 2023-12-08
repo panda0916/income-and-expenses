@@ -107,5 +107,5 @@ app.delete('/', (req, res) => {
 
 // app.listen(3100) 讓伺服器接收3100
 app.listen(3200, () => {
-    console.log('ON PORT 3100!')
+    console.log('ON PORT 3200!')
 })
