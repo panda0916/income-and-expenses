@@ -1,0 +1,14 @@
+body {
+    padding-left: 20%;
+    padding-right: 20%;
+    height: 100vh;
+    flex-direction: column;
+}
+input:not([type="radio"]) {
+    width: 100px;
+}
+
+.between {
+    display: flex;
+    justify-content: space-between;
+}
